@@ -8,11 +8,15 @@ namespace ConsoleApplication1
     {
         public static void Main(string[] args)
         {
-            System.Console.WriteLine("What is your username?");
-            string response = System.Console.ReadLine();
-           
-            System.Console.WriteLine("Here's your profile info");
-            System.Console.Write(GetProfile(response));
+            //System.Console.WriteLine("What is your username?");
+            //string response = System.Console.ReadLine();
+            var db = new DataAccess.Test1Entities();
+            foreach (var item in db.Contacts)
+            {
+                System.Console.WriteLine(item.First_Name + " " + item.Last_Name);
+            }
+            //System.Console.WriteLine("Here's your profile info");
+            //System.Console.Write(GetProfile(response));
             System.Console.ReadLine();
         }
         public static string GetProfile(string username)
