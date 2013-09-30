@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1509888e2b474253b294eea16f70ace4" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Person" Width="1.5" PointX="5.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Phone" Width="1.5" PointX="7.375" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Email" Width="1.5" PointX="7.375" PointY="3.625" />
+        <AssociationConnector Association="Model1.PersonPhone" />
+        <AssociationConnector Association="Model1.PersonEmail" />
+        <EntityTypeShape EntityType="Model1.State" Width="1.5" PointX="3.375" PointY="5.625" />
+        <EntityTypeShape EntityType="Model1.Address" Width="1.5" PointX="5.375" PointY="4.125" />
+        <AssociationConnector Association="Model1.PersonAddress" />
+        <AssociationConnector Association="Model1.StateAddress" />
+        <EntityTypeShape EntityType="Model1.Hobby" Width="1.5" PointX="3.125" PointY="0.75" />
+        <AssociationConnector Association="Model1.HobbyPerson" />
+        <EntityTypeShape EntityType="Model1.Company" Width="1.5" PointX="0.5" PointY="2.25" />
+        <EntityTypeShape EntityType="Model1.Type" Width="1.5" PointX="9.625" PointY="1.25" />
+        <AssociationConnector Association="Model1.PhoneType" />
+        <AssociationConnector Association="Model1.EmailType" />
+        <AssociationConnector Association="Model1.CompanyPhone" />
+        <EntityTypeShape EntityType="Model1.Employment" Width="1.5" PointX="2.875" PointY="2.5" />
+        <AssociationConnector Association="Model1.EmploymentPerson" />
+        <AssociationConnector Association="Model1.EmploymentCompany" />
+        <AssociationConnector Association="Model1.AddressCompany" />
+        <EntityTypeShape EntityType="Model1.Restaurant" Width="1.5" PointX="1.25" PointY="4.875" />
+        <EntityTypeShape EntityType="Model1.FoodType" Width="1.5" PointX="3.375" PointY="7.875" />
+        <AssociationConnector Association="Model1.FoodTypeRestaurant" />
+        <AssociationConnector Association="Model1.PersonRestaurant" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
