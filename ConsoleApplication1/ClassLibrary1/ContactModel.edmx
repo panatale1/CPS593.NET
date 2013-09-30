@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ContactModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ContactModelStoreContainer">
+    <EntitySet Name="Contacts1" EntityType="ContactModel.Store.Contacts1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Keywords1" EntityType="ContactModel.Store.Keywords1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactMethods1" EntityType="ContactModel.Store.ContactMethods1" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="KeywordsKeywords" Association="ContactModel.Store.KeywordsKeywords">
+      <End Role="Keywords" EntitySet="Keywords1" />
+      <End Role="Keyword" EntitySet="Keywords1" />
+    </AssociationSet>
+    <AssociationSet Name="KeywordsContacts" Association="ContactModel.Store.KeywordsContacts">
+      <End Role="Keywords" EntitySet="Keywords1" />
+      <End Role="Contacts" EntitySet="Contacts1" />
+    </AssociationSet>
+    <AssociationSet Name="ContactMethodsContacts" Association="ContactModel.Store.ContactMethodsContacts">
+      <End Role="ContactMethods" EntitySet="ContactMethods1" />
+      <End Role="Contacts" EntitySet="Contacts1" />
+    </AssociationSet>
+    <AssociationSet Name="ContactMethodsKeywords" Association="ContactModel.Store.ContactMethodsKeywords">
+      <End Role="ContactMethods" EntitySet="ContactMethods1" />
+      <End Role="Keywords" EntitySet="Keywords1" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contacts1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Keyword_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Keywords1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Parent_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactMethods1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contacts_Id" Type="int" Nullable="false" />
+    <Property Name="Keywords_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="KeywordsKeywords">
+    <End Role="Keywords" Type="ContactModel.Store.Keywords1" Multiplicity="1" />
+    <End Role="Keyword" Type="ContactModel.Store.Keywords1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Keywords">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Keyword">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KeywordsContacts">
+    <End Role="Keywords" Type="ContactModel.Store.Keywords1" Multiplicity="1" />
+    <End Role="Contacts" Type="ContactModel.Store.Contacts1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Keywords">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contacts">
+        <PropertyRef Name="Keyword_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContactMethodsContacts">
+    <End Role="ContactMethods" Type="ContactModel.Store.ContactMethods1" Multiplicity="*" />
+    <End Role="Contacts" Type="ContactModel.Store.Contacts1" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Contacts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactMethods">
+        <PropertyRef Name="Contacts_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContactMethodsKeywords">
+    <End Role="ContactMethods" Type="ContactModel.Store.ContactMethods1" Multiplicity="*" />
+    <End Role="Keywords" Type="ContactModel.Store.Keywords1" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Keywords">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactMethods">
+        <PropertyRef Name="Keywords_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ContactModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ContactModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts1" EntityType="ContactModel.Contact" />
+          <EntitySet Name="Keywords1" EntityType="ContactModel.Keyword" />
+          <AssociationSet Name="KeywordsKeywords" Association="ContactModel.KeywordsKeywords">
+            <End Role="Keywords" EntitySet="Keywords1" />
+            <End Role="Keyword" EntitySet="Keywords1" />
+          </AssociationSet>
+          <AssociationSet Name="KeywordsContacts" Association="ContactModel.KeywordsContacts">
+            <End Role="Keywords" EntitySet="Keywords1" />
+            <End Role="Contacts" EntitySet="Contacts1" />
+          </AssociationSet>
+          <EntitySet Name="ContactMethods1" EntityType="ContactModel.ContactMethod" />
+          <AssociationSet Name="ContactMethodsContacts" Association="ContactModel.ContactMethodsContacts">
+            <End Role="ContactMethods" EntitySet="ContactMethods1" />
+            <End Role="Contacts" EntitySet="Contacts1" />
+          </AssociationSet>
+          <AssociationSet Name="ContactMethodsKeywords" Association="ContactModel.ContactMethodsKeywords">
+            <End Role="ContactMethods" EntitySet="ContactMethods1" />
+            <End Role="Keywords" EntitySet="Keywords1" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <NavigationProperty Name="Keyword" Relationship="ContactModel.KeywordsContacts" FromRole="Contacts" ToRole="Keywords" />
+          <NavigationProperty Name="ContactMethod" Relationship="ContactModel.ContactMethodsContacts" FromRole="Contacts" ToRole="ContactMethods" />
+        </EntityType>
+        <EntityType Name="Keyword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="ContactModel.KeywordsKeywords" FromRole="Keywords" ToRole="Keyword" />
+          <NavigationProperty Name="Parent" Relationship="ContactModel.KeywordsKeywords" FromRole="Keyword" ToRole="Keywords" />
+          <NavigationProperty Name="Contacts" Relationship="ContactModel.KeywordsContacts" FromRole="Keywords" ToRole="Contacts" />
+          <NavigationProperty Name="ContactMethod" Relationship="ContactModel.ContactMethodsKeywords" FromRole="Keywords" ToRole="ContactMethods" />
+        </EntityType>
+        <Association Name="KeywordsKeywords">
+          <End Type="ContactModel.Keyword" Role="Keywords" Multiplicity="1" />
+          <End Type="ContactModel.Keyword" Role="Keyword" Multiplicity="*" />
+        </Association>
+        <Association Name="KeywordsContacts">
+          <End Type="ContactModel.Keyword" Role="Keywords" Multiplicity="1" />
+          <End Type="ContactModel.Contact" Role="Contacts" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ContactMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Contacts" Relationship="ContactModel.ContactMethodsContacts" FromRole="ContactMethods" ToRole="Contacts" />
+          <NavigationProperty Name="Keywords" Relationship="ContactModel.ContactMethodsKeywords" FromRole="ContactMethods" ToRole="Keywords" />
+        </EntityType>
+        <Association Name="ContactMethodsContacts">
+          <End Type="ContactModel.ContactMethod" Role="ContactMethods" Multiplicity="*" />
+          <End Type="ContactModel.Contact" Role="Contacts" Multiplicity="1" />
+        </Association>
+        <Association Name="ContactMethodsKeywords">
+          <End Type="ContactModel.ContactMethod" Role="ContactMethods" Multiplicity="*" />
+          <End Type="ContactModel.Keyword" Role="Keywords" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContactModelStoreContainer" CdmEntityContainer="ContactModelContainer">
+    <EntitySetMapping Name="Contacts1">
+      <EntityTypeMapping TypeName="IsTypeOf(ContactModel.Contact)">
+        <MappingFragment StoreEntitySet="Contacts1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Keywords1">
+      <EntityTypeMapping TypeName="IsTypeOf(ContactModel.Keyword)">
+        <MappingFragment StoreEntitySet="Keywords1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactMethods1">
+      <EntityTypeMapping TypeName="IsTypeOf(ContactModel.ContactMethod)">
+        <MappingFragment StoreEntitySet="ContactMethods1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="KeywordsKeywords" TypeName="ContactModel.KeywordsKeywords" StoreEntitySet="Keywords1">
+      <EndProperty Name="Keywords">
+        <ScalarProperty Name="Id" ColumnName="Parent_Id" />
+      </EndProperty>
+      <EndProperty Name="Keyword">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KeywordsContacts" TypeName="ContactModel.KeywordsContacts" StoreEntitySet="Contacts1">
+      <EndProperty Name="Keywords">
+        <ScalarProperty Name="Id" ColumnName="Keyword_Id" />
+      </EndProperty>
+      <EndProperty Name="Contacts">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContactMethodsContacts" TypeName="ContactModel.ContactMethodsContacts" StoreEntitySet="ContactMethods1">
+      <EndProperty Name="Contacts">
+        <ScalarProperty Name="Id" ColumnName="Contacts_Id" />
+      </EndProperty>
+      <EndProperty Name="ContactMethods">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContactMethodsKeywords" TypeName="ContactModel.ContactMethodsKeywords" StoreEntitySet="ContactMethods1">
+      <EndProperty Name="Keywords">
+        <ScalarProperty Name="Id" ColumnName="Keywords_Id" />
+      </EndProperty>
+      <EndProperty Name="ContactMethods">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
