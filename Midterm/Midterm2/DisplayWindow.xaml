@@ -1,0 +1,81 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Models="clr-namespace:Midterm2.Models" mc:Ignorable="d" x:Class="Midterm2.DisplayWindow"
+        Title="Midterm" Height="600" Width="1000" Loaded="Window_Loaded_1">
+    <Grid>
+        <GridSplitter Height="6" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <GridSplitter Width="6" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+        <TextBox x:Name="AddressesBox" HorizontalAlignment="Left" Height="23" Margin="0,259,0,0" TextWrapping="Wrap" Text="{Binding AddressMsg}" VerticalAlignment="Top" Width="493"/>
+        <TextBox x:Name="KeywordsBox" HorizontalAlignment="Left" Height="23" Margin="499,537,0,0" TextWrapping="Wrap" Text="{Binding KeywordsMsg}" VerticalAlignment="Top" Width="493"/>
+        <TextBox x:Name="MethodsBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding MethodsMsg}" VerticalAlignment="Bottom" Width="493"/>
+        <TextBox x:Name="ContactsBox" HorizontalAlignment="Left" Height="23" Margin="504,259,-5,0" TextWrapping="Wrap" Text="{Binding ContactsMsg}" VerticalAlignment="Top" Width="493"/>
+        <ListView x:Name="addressListView" ItemsSource="{Binding Addresses}" Margin="0,0,499,311" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="streetAddressColumn" Header="Street Address" Width="80" DisplayMemberBinding="{Binding StreetAddress}"/>
+                    <GridViewColumn x:Name="idColumn" Header="Id" Width="80" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn x:Name="cityColumn" Header="City" Width="80" DisplayMemberBinding="{Binding City}"/>
+                    <GridViewColumn x:Name="stateColumn" Header="State" Width="80" DisplayMemberBinding="{Binding State}"/>
+                    <GridViewColumn x:Name="zipColumn" Header="Zip" Width="80" DisplayMemberBinding="{Binding Zip}"/>
+                    <GridViewColumn x:Name="contactIdColumn" Header="Contact Id" Width="80" DisplayMemberBinding="{Binding ContactID}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="contactListView" ItemsSource="{Binding Contacts}" Margin="499,0,0,311" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="fbidColumn" Header="fbid" Width="80" DisplayMemberBinding="{Binding fbid}"/> 
+                    <GridViewColumn x:Name="firstNameColumn" Header="First Name" Width="80" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn x:Name="idColumn1" Header="Id" Width="80" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn x:Name="keyword_IdColumn" Header="Keyword Id" Width="80" DisplayMemberBinding="{Binding KeywordsID}"/>
+                    <GridViewColumn x:Name="lastNameColumn" Header="Last Name" Width="80" DisplayMemberBinding="{Binding LastName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="contactMethodListView" ItemsSource="{Binding ContactMethods}" Margin="0,288,499,23" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="contact_IdColumn" Header="Contact Id" Width="80" DisplayMemberBinding="{Binding Contact_ID}"/>
+                    <GridViewColumn x:Name="idColumn2" Header="Id" Width="80" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn x:Name="keywordIdColumn" Header="Keyword Id" Width="80" DisplayMemberBinding="{Binding KeywordsID}"/>
+                    <GridViewColumn x:Name="valueColumn" Header="Value" Width="80" DisplayMemberBinding="{Binding Value}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="keywordListView" ItemsSource="{Binding Keywords}" Margin="499,288,0,23" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="idColumn3" Header="Id" Width="80" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn x:Name="keywordsIdColumn1" Header="Keywords Id" Width="80" DisplayMemberBinding="{Binding KeywordsID}"/>
+                    <GridViewColumn x:Name="nameColumn" Header="Name" Width="80" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn x:Name="parent_IdColumn" Header="Parent Id" Width="80" DisplayMemberBinding="{Binding Parent_ID}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

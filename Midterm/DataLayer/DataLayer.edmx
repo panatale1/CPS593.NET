@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CSharpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CSharpModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="CSharpModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactMethods" EntityType="CSharpModel.Store.ContactMethods" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contacts" EntityType="CSharpModel.Store.Contacts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Keywords" EntityType="CSharpModel.Store.Keywords" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_Addresses_dbo_Contacts_ContactId" Association="CSharpModel.Store.FK_dbo_Addresses_dbo_Contacts_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ContactMethods_dbo_Contacts_Contact_Id" Association="CSharpModel.Store.FK_dbo_ContactMethods_dbo_Contacts_Contact_Id">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="ContactMethods" EntitySet="ContactMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ContactMethods_dbo_Keywords_KeywordId" Association="CSharpModel.Store.FK_dbo_ContactMethods_dbo_Keywords_KeywordId">
+            <End Role="Keywords" EntitySet="Keywords" />
+            <End Role="ContactMethods" EntitySet="ContactMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contacts_dbo_Keywords_Keyword_Id" Association="CSharpModel.Store.FK_dbo_Contacts_dbo_Keywords_Keyword_Id">
+            <End Role="Keywords" EntitySet="Keywords" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Keywords_dbo_Keywords_Parent_Id" Association="CSharpModel.Store.FK_dbo_Keywords_dbo_Keywords_Parent_Id">
+            <End Role="Keywords" EntitySet="Keywords" />
+            <End Role="Keywords1" EntitySet="Keywords" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StreetAddress" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactMethods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="ContactsId" Type="int" Nullable="false" />
+          <Property Name="KeywordId" Type="int" Nullable="false" />
+          <Property Name="Contact_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="KeywordsId" Type="int" Nullable="false" />
+          <Property Name="fbid" Type="nvarchar" MaxLength="500" />
+          <Property Name="Keyword_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Keywords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="KeywordsId" Type="int" Nullable="false" />
+          <Property Name="Parent_Id" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_Addresses_dbo_Contacts_ContactId">
+          <End Role="Contacts" Type="CSharpModel.Store.Contacts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Addresses" Type="CSharpModel.Store.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ContactMethods_dbo_Contacts_Contact_Id">
+          <End Role="Contacts" Type="CSharpModel.Store.Contacts" Multiplicity="0..1" />
+          <End Role="ContactMethods" Type="CSharpModel.Store.ContactMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactMethods">
+              <PropertyRef Name="Contact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ContactMethods_dbo_Keywords_KeywordId">
+          <End Role="Keywords" Type="CSharpModel.Store.Keywords" Multiplicity="1" />
+          <End Role="ContactMethods" Type="CSharpModel.Store.ContactMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keywords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactMethods">
+              <PropertyRef Name="KeywordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contacts_dbo_Keywords_Keyword_Id">
+          <End Role="Keywords" Type="CSharpModel.Store.Keywords" Multiplicity="0..1" />
+          <End Role="Contacts" Type="CSharpModel.Store.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keywords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="Keyword_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Keywords_dbo_Keywords_Parent_Id">
+          <End Role="Keywords" Type="CSharpModel.Store.Keywords" Multiplicity="0..1" />
+          <End Role="Keywords1" Type="CSharpModel.Store.Keywords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keywords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Keywords1">
+              <PropertyRef Name="Parent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CSharpModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CSharpEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="CSharpModel.Address" />
+          <EntitySet Name="ContactMethods" EntityType="CSharpModel.ContactMethod" />
+          <EntitySet Name="Contacts" EntityType="CSharpModel.Contact" />
+          <EntitySet Name="Keywords" EntityType="CSharpModel.Keyword" />
+          <AssociationSet Name="FK_dbo_Addresses_dbo_Contacts_ContactId" Association="CSharpModel.FK_dbo_Addresses_dbo_Contacts_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ContactMethods_dbo_Contacts_Contact_Id" Association="CSharpModel.FK_dbo_ContactMethods_dbo_Contacts_Contact_Id">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="ContactMethods" EntitySet="ContactMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ContactMethods_dbo_Keywords_KeywordId" Association="CSharpModel.FK_dbo_ContactMethods_dbo_Keywords_KeywordId">
+            <End Role="Keywords" EntitySet="Keywords" />
+            <End Role="ContactMethods" EntitySet="ContactMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contacts_dbo_Keywords_Keyword_Id" Association="CSharpModel.FK_dbo_Contacts_dbo_Keywords_Keyword_Id">
+            <End Role="Keywords" EntitySet="Keywords" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Keywords_dbo_Keywords_Parent_Id" Association="CSharpModel.FK_dbo_Keywords_dbo_Keywords_Parent_Id">
+            <End Role="Keywords" EntitySet="Keywords" />
+            <End Role="Keywords1" EntitySet="Keywords" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetAddress" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Zip" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="CSharpModel.FK_dbo_Addresses_dbo_Contacts_ContactId" FromRole="Addresses" ToRole="Contacts" />
+        </EntityType>
+        <EntityType Name="ContactMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ContactsId" Type="Int32" Nullable="false" />
+          <Property Name="KeywordId" Type="Int32" Nullable="false" />
+          <Property Name="Contact_Id" Type="Int32" />
+          <NavigationProperty Name="Contact" Relationship="CSharpModel.FK_dbo_ContactMethods_dbo_Contacts_Contact_Id" FromRole="ContactMethods" ToRole="Contacts" />
+          <NavigationProperty Name="Keyword" Relationship="CSharpModel.FK_dbo_ContactMethods_dbo_Keywords_KeywordId" FromRole="ContactMethods" ToRole="Keywords" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="KeywordsId" Type="Int32" Nullable="false" />
+          <Property Name="fbid" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Keyword_Id" Type="Int32" />
+          <NavigationProperty Name="Addresses" Relationship="CSharpModel.FK_dbo_Addresses_dbo_Contacts_ContactId" FromRole="Contacts" ToRole="Addresses" />
+          <NavigationProperty Name="ContactMethods" Relationship="CSharpModel.FK_dbo_ContactMethods_dbo_Contacts_Contact_Id" FromRole="Contacts" ToRole="ContactMethods" />
+          <NavigationProperty Name="Keyword" Relationship="CSharpModel.FK_dbo_Contacts_dbo_Keywords_Keyword_Id" FromRole="Contacts" ToRole="Keywords" />
+        </EntityType>
+        <EntityType Name="Keyword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="KeywordsId" Type="Int32" Nullable="false" />
+          <Property Name="Parent_Id" Type="Int32" />
+          <NavigationProperty Name="ContactMethods" Relationship="CSharpModel.FK_dbo_ContactMethods_dbo_Keywords_KeywordId" FromRole="Keywords" ToRole="ContactMethods" />
+          <NavigationProperty Name="Contacts" Relationship="CSharpModel.FK_dbo_Contacts_dbo_Keywords_Keyword_Id" FromRole="Keywords" ToRole="Contacts" />
+          <NavigationProperty Name="Keywords1" Relationship="CSharpModel.FK_dbo_Keywords_dbo_Keywords_Parent_Id" FromRole="Keywords" ToRole="Keywords1" />
+          <NavigationProperty Name="Keyword1" Relationship="CSharpModel.FK_dbo_Keywords_dbo_Keywords_Parent_Id" FromRole="Keywords1" ToRole="Keywords" />
+        </EntityType>
+        <Association Name="FK_dbo_Addresses_dbo_Contacts_ContactId">
+          <End Role="Contacts" Type="CSharpModel.Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Addresses" Type="CSharpModel.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ContactMethods_dbo_Contacts_Contact_Id">
+          <End Role="Contacts" Type="CSharpModel.Contact" Multiplicity="0..1" />
+          <End Role="ContactMethods" Type="CSharpModel.ContactMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactMethods">
+              <PropertyRef Name="Contact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ContactMethods_dbo_Keywords_KeywordId">
+          <End Role="Keywords" Type="CSharpModel.Keyword" Multiplicity="1" />
+          <End Role="ContactMethods" Type="CSharpModel.ContactMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keywords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContactMethods">
+              <PropertyRef Name="KeywordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contacts_dbo_Keywords_Keyword_Id">
+          <End Role="Keywords" Type="CSharpModel.Keyword" Multiplicity="0..1" />
+          <End Role="Contacts" Type="CSharpModel.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keywords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="Keyword_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Keywords_dbo_Keywords_Parent_Id">
+          <End Role="Keywords" Type="CSharpModel.Keyword" Multiplicity="0..1" />
+          <End Role="Keywords1" Type="CSharpModel.Keyword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keywords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Keywords1">
+              <PropertyRef Name="Parent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSharpModelStoreContainer" CdmEntityContainer="CSharpEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="CSharpModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactMethods">
+            <EntityTypeMapping TypeName="CSharpModel.ContactMethod">
+              <MappingFragment StoreEntitySet="ContactMethods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ContactsId" ColumnName="ContactsId" />
+                <ScalarProperty Name="KeywordId" ColumnName="KeywordId" />
+                <ScalarProperty Name="Contact_Id" ColumnName="Contact_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="CSharpModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="KeywordsId" ColumnName="KeywordsId" />
+                <ScalarProperty Name="fbid" ColumnName="fbid" />
+                <ScalarProperty Name="Keyword_Id" ColumnName="Keyword_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Keywords">
+            <EntityTypeMapping TypeName="CSharpModel.Keyword">
+              <MappingFragment StoreEntitySet="Keywords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KeywordsId" ColumnName="KeywordsId" />
+                <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

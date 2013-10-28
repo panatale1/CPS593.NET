@@ -49,6 +49,7 @@
     <Compile Include="Contact.cs">
       <DependentUpon>Test1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CSharpOct3Context.cs" />
     <Compile Include="PhoneNumber.cs">
       <DependentUpon>Test1.tt</DependentUpon>
     </Compile>

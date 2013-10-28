@@ -1,0 +1,30 @@
+﻿<Window x:Class="BasicContacts.ContactsWIndow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ContactsWIndow" Height="300" Width="300">
+    <Grid>
+        <TextBox Margin="1,10,100,216">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.007"/>
+                    <TranslateTransform X="0.001"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button HorizontalAlignment="Right" Width="80" Margin="10">Add</Button>
+        <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="6"/>
+        <ListView Margin="10,60,100,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text=""/>
+                        <TextBlock Text=""/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>

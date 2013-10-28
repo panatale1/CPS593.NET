@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DataLayer.csproj">
-      <Project>{e4748d88-0d44-4696-a15f-d71aa2c66315}</Project>
-      <Name>DataLayer</Name>
+    <ProjectReference Include="..\..\DataAccess\DataAccess.csproj">
+      <Project>{8c6d37fc-3fc4-4b13-9fbe-4c24ca9a3d01}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
