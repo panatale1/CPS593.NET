@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicContacts", "BasicContacts\BasicContacts.csproj", "{44C2B3C9-F33C-43CB-925D-E1CEF307221C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C33352D4-89D5-40BE-A6F3-9DB510C0AA94} = {C33352D4-89D5-40BE-A6F3-9DB510C0AA94}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicContactsTests", "BasicContactsTests\BasicContactsTests.csproj", "{B0B660B8-DF52-4DE3-A870-E8E14B544618}"
 EndProject

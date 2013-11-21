@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:BasicContacts"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-    xmlns:Models="clr-namespace:DataLayer.Models;assembly=DataLayer" mc:Ignorable="d" x:Class="BasicContacts.ContactsWindow"
+    mc:Ignorable="d" x:Class="BasicContacts.ContactsWindow"
          
     Title="ContactsWindow" Height="628.94" Width="790.597" Loaded="Window_Loaded">
     <Window.Resources>

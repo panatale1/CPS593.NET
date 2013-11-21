@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b519cd14-498e-492f-aa18-43642d31122d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52255/ContactsSoap.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ContactsSoap.wsdl" MetadataType="Wsdl" ID="d01dfba4-4103-45df-9f08-ebf19664d238" SourceId="1" SourceUrl="http://localhost:52255/ContactsSoap.svc?wsdl" />
+    <MetadataFile FileName="ContactsSoap2.xsd" MetadataType="Schema" ID="1c49ab8d-0898-43fd-8ecd-0f5266f074b0" SourceId="1" SourceUrl="http://localhost:52255/ContactsSoap.svc?xsd=xsd2" />
+    <MetadataFile FileName="ContactsSoap.xsd" MetadataType="Schema" ID="6df9de81-68d6-4771-8ba5-ac543232e8fb" SourceId="1" SourceUrl="http://localhost:52255/ContactsSoap.svc?xsd=xsd0" />
+    <MetadataFile FileName="ContactsSoap.disco" MetadataType="Disco" ID="04c83a10-f2a6-443f-8f9a-fd7a3f0e7032" SourceId="1" SourceUrl="http://localhost:52255/ContactsSoap.svc?disco" />
+    <MetadataFile FileName="ContactsSoap1.xsd" MetadataType="Schema" ID="ce9771ee-ed77-49de-99b7-9e587f01e040" SourceId="1" SourceUrl="http://localhost:52255/ContactsSoap.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

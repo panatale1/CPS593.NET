@@ -1,5 +1,4 @@
-﻿using DataLayer.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,13 +8,14 @@ using System.Data.Entity;
 using System.Windows.Input;
 using System.Threading;
 using System.Net.Http;
+using BasicContacts.ContactsSoap;
 
 namespace BasicContacts
 {
 
     public class ContactsVM : BaseVM
     {
-        CSharpContext _DB;
+
         string _AccessToken;
 
         public ContactsVM()
@@ -56,16 +56,21 @@ namespace BasicContacts
         {
             IsLoading = System.Windows.Visibility.Visible;
             //var temp = _DB.Contacts;
-            var client = new HttpClient
+            var soapClient = new ContactsSoap.ContactsSoapClient();
+            Log = await soapClient.DoWorkAsync();
+            IEnumerable<Contact> contacts;
+            int i = 0;
+            do
             {
-                BaseAddress = new Uri("http://localhost:52255/api/")
-            };
-            var results = await client.GetAsync("Contacts");
-            var contacts = await Task.Run(()=>results.Content.ReadAsAsync<IEnumerable<Contact>>());
-            foreach (var item in contacts)
-            {
-                Contacts.Add(item);
-            }
+
+
+                contacts = await soapClient.GetContactsAsync(i++);
+                foreach (var item in contacts)
+                {
+                    Contacts.Add(item);
+                }
+            } while (contacts.Any());
+
             IsLoading = System.Windows.Visibility.Hidden;
 
         }
