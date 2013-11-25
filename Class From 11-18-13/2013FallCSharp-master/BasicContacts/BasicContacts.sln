@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicContacts", "BasicContacts\BasicContacts.csproj", "{44C2B3C9-F33C-43CB-925D-E1CEF307221C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C33352D4-89D5-40BE-A6F3-9DB510C0AA94} = {C33352D4-89D5-40BE-A6F3-9DB510C0AA94}
@@ -11,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{B8054899-CD5B-4A65-8B50-D6F22F638E5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "..\WebAPI\WebAPI.csproj", "{C33352D4-89D5-40BE-A6F3-9DB510C0AA94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "..\WebMVC\WebMVC.csproj", "{660FE66D-F192-430F-AEBD-BCFA7B6DFBBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +38,10 @@ Global
 		{C33352D4-89D5-40BE-A6F3-9DB510C0AA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C33352D4-89D5-40BE-A6F3-9DB510C0AA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C33352D4-89D5-40BE-A6F3-9DB510C0AA94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660FE66D-F192-430F-AEBD-BCFA7B6DFBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660FE66D-F192-430F-AEBD-BCFA7B6DFBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660FE66D-F192-430F-AEBD-BCFA7B6DFBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660FE66D-F192-430F-AEBD-BCFA7B6DFBBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
