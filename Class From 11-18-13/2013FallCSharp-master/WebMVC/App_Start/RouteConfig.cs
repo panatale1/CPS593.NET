@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+
 namespace WebMVC
 {
     public class RouteConfig
@@ -12,6 +13,9 @@ namespace WebMVC
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+
+
 
             routes.MapRoute(
                 name: "Default",

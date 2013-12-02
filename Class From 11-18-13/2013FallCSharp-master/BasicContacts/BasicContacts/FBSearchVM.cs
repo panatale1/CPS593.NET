@@ -93,6 +93,12 @@ namespace BasicContacts
                 {
                     response = await _Client.GetAsync("/search?q=" + searchTerm + "&type=user&fields=id,name,username&limit=10&access_token=" + AccessToken);
                 }
+                else if (SearchType == BasicContacts.SearchType.Bing)
+                {
+                    var bing = new BingServiceReference.Bing.BingSearchContainer(new Uri("https://api.datamarket.azure.com/Bing/Search/v1/"));
+                    bing.WebResultSet.Where(x => x.Title == "");
+                    response = null;
+                }
                 else
                 {
                     var fql = "SELECT uid, name, username FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND strpos(lower(name), lower('" + searchTerm + "'))>=0";
@@ -109,7 +115,7 @@ namespace BasicContacts
 
     public enum SearchType
     {
-        Everyone, Friends
+        Everyone, Friends, Bing
     }
 
     public class MatchConverter : IValueConverter

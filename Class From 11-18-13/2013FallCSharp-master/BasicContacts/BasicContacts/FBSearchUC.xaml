@@ -42,5 +42,6 @@
         <Button Grid.Row="3" HorizontalAlignment="Left" Padding="5" Margin="99,0,0,0" Width="61">Add New</Button>
         <RadioButton IsChecked="{Binding SearchType, Converter={StaticResource MatchConverter}, ConverterParameter=Everyone}" Content="Everyone" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top" Height="15" Width="72"/>
         <RadioButton IsChecked="{Binding SearchType, Converter={StaticResource MatchConverter}, ConverterParameter=Friends}" Content="Friends" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" Height="15" Width="57"/>
+        <RadioButton IsChecked="{Binding SearchType, ConverterParameter=Bing, Converter={StaticResource MatchConverter}}" Content="Bing" HorizontalAlignment="Left" Margin="144,37,0,0" VerticalAlignment="Top" Height="15" Width="57" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>
