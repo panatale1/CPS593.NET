@@ -36,11 +36,12 @@ namespace DataLayer.Migrations
                 );
             context.SaveChanges();
             //context.Database.ExecuteSqlCommand("SET Identity_Insert Keywords OFF;");
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 200; i++)
             {
                 context.Contacts.AddOrUpdate(
                     new Contact { FirstName = "Mickey" + i, LastName = "Duck", KeywordId = 3 },
-                    new Contact { FirstName = "Donald" + i, LastName = "Mouse", KeywordId = 3 }
+                    new Contact { FirstName = "Donald" + i, LastName = "Mouse", KeywordId = 3 },
+                    new Contact { FirstName = "Moshe" + i, LastName = "Mouse", KeywordId=3}
                     );
             }
         }

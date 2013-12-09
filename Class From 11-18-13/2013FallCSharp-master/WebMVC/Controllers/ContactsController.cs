@@ -10,7 +10,7 @@ using DataLayer.Models;
 
 namespace WebMVC.Controllers
 {
-    [Authorize]
+    
     public class ContactsController : Controller
     {
         private CSharpContext db = new CSharpContext();
