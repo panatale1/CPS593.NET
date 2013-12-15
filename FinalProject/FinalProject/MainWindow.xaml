@@ -1,0 +1,63 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FinalProject" x:Class="FinalProject.MainWindow"
+        Title="MainWindow" Height="723.134" Width="816.045" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <local:_DataLayerForFinal_FinalContextDataSet x:Key="_DataLayerForFinal_FinalContextDataSet"/>
+        <CollectionViewSource x:Key="peopleViewSource" Source="{Binding People, Source={StaticResource _DataLayerForFinal_FinalContextDataSet}}"/>
+        <CollectionViewSource x:Key="addressesViewSource" Source="{Binding Addresses, Source={StaticResource _DataLayerForFinal_FinalContextDataSet}}"/>
+        <CollectionViewSource x:Key="emailsViewSource" Source="{Binding Emails, Source={StaticResource _DataLayerForFinal_FinalContextDataSet}}"/>
+        <CollectionViewSource x:Key="phonesViewSource" Source="{Binding Phones, Source={StaticResource _DataLayerForFinal_FinalContextDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource peopleViewSource}" Margin="0,0,0,-1">
+        <GridSplitter Width="6" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="271,0,531,0"/>
+        <ListView x:Name="peopleListView" ItemsSource="{Binding ContactList}" Margin="-4,0,537,0" SelectionMode="Single" SelectedItem="{Binding CurrentPerson}">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="lastNameColumn" Header="Last Name" Width="80" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn x:Name="firstNameColumn" Header="First Name" Width="80" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn x:Name="typeColumn" Header="Type" Width="80" DisplayMemberBinding="{Binding Type}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <DataGrid x:Name="addressesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" DataContext="{Binding CurrentPerson}" Margin="271,0,0,323" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="streetColumn" Binding="{Binding Street}" Header="Street" Width="50*"/>
+                <DataGridTextColumn x:Name="cityColumn" Binding="{Binding City}" Header="City" Width="20*"/>
+                <DataGridTextColumn x:Name="stateColumn" Binding="{Binding State}" Header="State" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="zIPColumn" Binding="{Binding ZIP}" Header="ZIP" Width="10*"/>
+                <DataGridTextColumn x:Name="typeColumn1" Binding="{Binding Type}" Header="Type" Width="30*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="emailsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" DataContext="{Binding CurrentPerson}" Margin="277,165,0,162" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="emailAddressColumn" Binding="{Binding EmailAddress}" Header="Email Address" Width="50*"/>
+                <DataGridTextColumn x:Name="typeColumn2" Binding="{Binding Type}" Header="Type" Width="30*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="phonesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" DataContext="{Binding CurrentPerson}"  Margin="277,326,0,102" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="phoneNumberColumn" Binding="{Binding PhoneNumber}" Header="Phone Number" Width="50*"/>
+                <DataGridTextColumn x:Name="typeColumn3" Binding="{Binding Type}" Header="Type" Width="30*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GridSplitter Height="6" HorizontalAlignment="Stretch" Margin="277,509,0,96"/>
+        <Button Content="Add Person" HorizontalAlignment="Left"  Margin="271,515,0,-1" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Add Email" HorizontalAlignment="Left" Margin="532,515,0,0" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Add Address" HorizontalAlignment="Left" Margin="401,515,0,0" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Delete Email" HorizontalAlignment="Left" Margin="536,563,0,0" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Delete Address" HorizontalAlignment="Left" Margin="404,563,0,0" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Delete Person" HorizontalAlignment="Left" Margin="269,564,0,-1" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Delete Phone" HorizontalAlignment="Left" Margin="671,563,0,0" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Add Phone" HorizontalAlignment="Left" Margin="669,515,0,0" VerticalAlignment="Top" Width="134" Height="48"/>
+        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="531" Height="83" Margin="277,611,0,0"/>
+    </Grid>
+</Window>
