@@ -25,9 +25,6 @@ namespace Final2 {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             DataContext = new ContactsVM();
 
-            System.Windows.Data.CollectionViewSource personViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("personViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // personViewSource.Source = [generic data source]
         }
     }
 }

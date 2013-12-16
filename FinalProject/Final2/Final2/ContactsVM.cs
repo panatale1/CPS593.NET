@@ -70,23 +70,7 @@ namespace Final2 {
             AddressList = db.Addresses.Local;
             db.Addresses.Load();
 
-            foreach (var dude in ContactList){
-                foreach (var place in AddressList) {
-                    if (dude.PID == place.PersonID) {
-                        dude.alist.Add(place);
-                    }
-                }
-                foreach (var em in EmailList) {
-                    if (dude.PID == em.PersonID) {
-                        dude.elist.Add(em);
-                    }
-                }
-                foreach (var ph in PhoneList) {
-                    if (dude.PID == ph.PersonID) {
-                        dude.plist.Add(ph);
-                    }
-                }
-            }
+
 
             SaveCommand = new DelegateCommand(() => db.SaveChanges());
             AddPersonCommand = new DelegateCommand(() => {
@@ -118,10 +102,12 @@ namespace Final2 {
                 AddressList.Remove(CurrentAddress);
             });
             DeletePhoneCommand = new DelegateCommand(() => {
+                
                 db.Phones.Remove(CurrentPhone);
                 PhoneList.Remove(CurrentPhone);
             });
             DeleteEmailCommand = new DelegateCommand(() => {
+                
                 db.Emails.Remove(CurrentEmail);
                 EmailList.Remove(CurrentEmail);
             });
