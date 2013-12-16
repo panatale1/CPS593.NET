@@ -13,7 +13,7 @@ namespace DataLayerForFinal {
         public string City { get; set; }
         public string State { get; set; }
         public string ZIP { get; set; }
-        public int Type { get; set; }
+        public string Type { get; set; }
         public int PersonID { get; set; }
     }
 }

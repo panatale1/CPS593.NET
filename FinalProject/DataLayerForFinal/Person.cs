@@ -11,7 +11,7 @@ namespace DataLayerForFinal {
         public int PID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public int Type { get; set; }
+        public string Type { get; set; }
         public virtual ICollection<Email> Emails { get; set; }
         public virtual ICollection<Phone> Phones { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }

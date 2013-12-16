@@ -1,17 +1,17 @@
-﻿using DataLayerForFinal;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using DataLayerForFinal;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using System.Data.Entity;
 
-namespace FinalProject {
-    class ContactsVM : BaseVM {
+namespace Final2 {
+    class ContactsVM : BaseVM{
         public ICommand SaveCommand { get; set; }
         public ICommand AddPersonCommand { get; set; }
         public ICommand AddEmailCommand { get; set; }
@@ -21,7 +21,7 @@ namespace FinalProject {
         public ICommand DeleteEmailCommand { get; set; }
         public ICommand DeleteAddressCommand { get; set; }
         public ICommand DeletePhoneCommand { get; set; }
-        
+
         public ObservableCollection<Person> ContactList { get; private set; }
         public ObservableCollection<Email> EmailList { get; set; }
         public ObservableCollection<Address> AddressList { get; set; }
@@ -51,17 +51,11 @@ namespace FinalProject {
             get { return _CurrentPhone; }
             set { _CurrentPhone = value; OnPropertyChanged(); }
         }
-        
-        
+
         public ContactsVM() {
             var db = new FinalContext();
-           
             ContactList = db.People.Local;
-            db.People.Load(); 
-            EmailList = new ObservableCollection<Email>();
-            AddressList = new ObservableCollection<Address>();
-            PhoneList = new ObservableCollection<Phone>();
-            TypeList = new ObservableCollection<CType>();
+            db.People.Load();
 
             SaveCommand = new DelegateCommand(() => db.SaveChanges());
             AddPersonCommand = new DelegateCommand(() => {
@@ -97,10 +91,8 @@ namespace FinalProject {
                 db.Emails.Remove(CurrentEmail);
                 EmailList.Remove(CurrentEmail);
             });
-
         }
     }
-
     public class BaseVM : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 

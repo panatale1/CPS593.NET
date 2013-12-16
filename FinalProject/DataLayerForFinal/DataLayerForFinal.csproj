@@ -52,13 +52,9 @@
     <Compile Include="CType.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="FinalContext.cs" />
-    <Compile Include="Migrations\201312142054560_John.cs" />
-    <Compile Include="Migrations\201312142054560_John.Designer.cs">
-      <DependentUpon>201312142054560_John.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201312150359314_Fixing.cs" />
-    <Compile Include="Migrations\201312150359314_Fixing.Designer.cs">
-      <DependentUpon>201312150359314_Fixing.cs</DependentUpon>
+    <Compile Include="Migrations\201312152201521_Fixing2.cs" />
+    <Compile Include="Migrations\201312152201521_Fixing2.Designer.cs">
+      <DependentUpon>201312152201521_Fixing2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -71,11 +67,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312142054560_John.resx">
-      <DependentUpon>201312142054560_John.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312150359314_Fixing.resx">
-      <DependentUpon>201312150359314_Fixing.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312152201521_Fixing2.resx">
+      <DependentUpon>201312152201521_Fixing2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

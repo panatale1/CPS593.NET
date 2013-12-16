@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{23376F15-18BE-4335-9B84-E5D39057D8E6}</ProjectGuid>
+    <ProjectGuid>{67F3059D-C723-4B07-B932-DCBFE11AB621}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FinalProject</RootNamespace>
-    <AssemblyName>FinalProject</AssemblyName>
+    <RootNamespace>Final2</RootNamespace>
+    <AssemblyName>Final2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,23 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DispWindow.xaml.cs">
-      <DependentUpon>DispWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_DataLayerForFinal_FinalContextDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_DataLayerForFinal_FinalContextDataSet.xsd</DependentUpon>
-    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ContactsVM.cs" />
-    <Compile Include="_DataLayerForFinal_FinalContextDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_DataLayerForFinal_FinalContextDataSet1.xsd</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -109,43 +104,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="_DataLayerForFinal_FinalContextDataSet.xsc">
-      <DependentUpon>_DataLayerForFinal_FinalContextDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_DataLayerForFinal_FinalContextDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_DataLayerForFinal_FinalContextDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_DataLayerForFinal_FinalContextDataSet.xss">
-      <DependentUpon>_DataLayerForFinal_FinalContextDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_DataLayerForFinal_FinalContextDataSet1.xsc">
-      <DependentUpon>_DataLayerForFinal_FinalContextDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="_DataLayerForFinal_FinalContextDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_DataLayerForFinal_FinalContextDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_DataLayerForFinal_FinalContextDataSet1.xss">
-      <DependentUpon>_DataLayerForFinal_FinalContextDataSet1.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLayerForFinal\DataLayerForFinal.csproj">
+    <ProjectReference Include="..\..\DataLayerForFinal\DataLayerForFinal.csproj">
       <Project>{b2353c16-df8b-43c5-b6ff-8957635f05f2}</Project>
       <Name>DataLayerForFinal</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="DispWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

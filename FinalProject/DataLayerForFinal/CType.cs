@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace DataLayerForFinal {
     public class CType {
         [Key]
-        public int TID { get; set; }
         public string TypeName { get; set; }
     }
 }

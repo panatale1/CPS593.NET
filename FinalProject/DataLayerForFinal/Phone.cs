@@ -10,7 +10,7 @@ namespace DataLayerForFinal {
         [Key]
         public int PhID { get; set; }
         public string PhoneNumber { get; set; }
-        public int Type { get; set; }
+        public string Type { get; set; }
         public int PersonID { get; set; }
     }
 }
