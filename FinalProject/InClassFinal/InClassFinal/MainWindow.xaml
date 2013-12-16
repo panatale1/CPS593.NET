@@ -1,0 +1,10 @@
+﻿<Window x:Class="InClassFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Label Content="Enter a City Name:" Margin="136,95,224,190"/>
+        <toolkit:AutoCompleteBox x:Name="AutoBox" ToolTip="Enter City Name" Height="50" Width="200" ItemsSource="{Binding SuggestionList}" Text="{Binding Suggestion, Mode=TwoWay}"/>
+    </Grid>
+</Window>
