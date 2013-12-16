@@ -57,6 +57,7 @@ namespace Final2 {
         FinalContext db;
         public ContactsVM() {
             db = new FinalContext();
+
             ContactList = db.People.Local;
             db.People.Load();
 
@@ -69,6 +70,24 @@ namespace Final2 {
             AddressList = db.Addresses.Local;
             db.Addresses.Load();
 
+            foreach (var dude in ContactList){
+                foreach (var place in AddressList) {
+                    if (dude.PID == place.PersonID) {
+                        dude.alist.Add(place);
+                    }
+                }
+                foreach (var em in EmailList) {
+                    if (dude.PID == em.PersonID) {
+                        dude.elist.Add(em);
+                    }
+                }
+                foreach (var ph in PhoneList) {
+                    if (dude.PID == ph.PersonID) {
+                        dude.plist.Add(ph);
+                    }
+                }
+            }
+
             SaveCommand = new DelegateCommand(() => db.SaveChanges());
             AddPersonCommand = new DelegateCommand(() => {
                 CurrentPerson = new Person();
@@ -77,7 +96,8 @@ namespace Final2 {
             });
             AddEmailCommand = new DelegateCommand(() => {
                 var em = new Email();
-                CurrentPerson.elist.Add(em);
+                EmailList.Add(em);
+                db.Emails.Add(em);
             });
             DeletePersonCommand = new DelegateCommand(() => {
                 db.People.Remove(CurrentPerson);
@@ -85,11 +105,13 @@ namespace Final2 {
             });
             AddPhoneCommand = new DelegateCommand(() => {
                 var pn = new Phone();
-                CurrentPerson.plist.Add(pn);
+                PhoneList.Add(pn);
+                db.Phones.Add(pn);
             });
             AddAddressCommand = new DelegateCommand(() => {
                 var ad = new Address();
-                CurrentPerson.alist.Add(ad);
+                AddressList.Add(ad);
+                db.Addresses.Add(ad);
             });
             DeleteAddressCommand = new DelegateCommand(() => {
                 db.Addresses.Remove(CurrentAddress);
