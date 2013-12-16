@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +62,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Service References\Bubble\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,14 +111,49 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\Bubble\ContactsSoap.wsdl" />
+    <None Include="Service References\Bubble\ContactsSoap.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Bubble\ContactsSoap1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Bubble\ContactsSoap2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Bubble\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Bubble\ContactsSoap.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Bubble\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Bubble\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Bubble\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\DataLayerForFinal\DataLayerForFinal.csproj">
       <Project>{b2353c16-df8b-43c5-b6ff-8957635f05f2}</Project>
       <Name>DataLayerForFinal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Soapy\Soapy.csproj">
+      <Project>{793fdccc-fc28-4492-9915-0d602b6b24ac}</Project>
+      <Name>Soapy</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

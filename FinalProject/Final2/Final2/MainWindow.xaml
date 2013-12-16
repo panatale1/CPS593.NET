@@ -66,15 +66,15 @@
                 <DataGridTextColumn x:Name="typeColumn3" Binding="{Binding Type}" Header="Type" Width="120"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete Address" Command="{Binding DeleteAddressCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="136,49,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Add Address" Command="{Binding AddAddressCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="136,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Delete Email" Command="{Binding DeleteEmailCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="300,49,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Add Email" Command="{Binding AddEmailCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="300,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Delete Phone" Command="{Binding DeletePhoneCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="453,49,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Add Phone" Command="{Binding AddPhoneCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="453,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Add Person" Command="{Binding AddPersonCommand}" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Delete Person" Command="{Binding DeletePersonCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,49,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Save"  Command="{Binding SaveCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="0,99,0,0" Grid.Row="3" VerticalAlignment="Top" Width="553"/>
+        <Button Content="Delete Address" Command="{Binding DeleteAddressCommand}" Grid.Column="1" Margin="136,49,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Add Address" Command="{Binding AddAddressCommand}" Grid.Column="1" Margin="136,0,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Delete Email" Command="{Binding DeleteEmailCommand}" Grid.Column="1" Margin="300,49,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Add Email" Command="{Binding AddEmailCommand}" Grid.Column="1" Margin="300,0,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Delete Phone" Command="{Binding DeletePhoneCommand}" Grid.Column="1" Margin="453,49,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Add Phone" Command="{Binding AddPhoneCommand}" Grid.Column="1" Margin="453,0,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Add Person" Command="{Binding AddPersonCommand}" Grid.Column="1" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Delete Person" Command="{Binding DeletePersonCommand}" Grid.Column="1" Margin="0,49,0,0" Grid.Row="3" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Save"  Command="{Binding SaveCommand}" Grid.Column="1" Margin="0,99,0,0" Grid.Row="3" Width="553" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Grid x:Name="grid1" DataContext="{Binding CurrentPerson}" HorizontalAlignment="Left" Margin="0" Grid.Row="3" VerticalAlignment="Top" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
