@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Data.Entity;
 
 namespace Final2 {
-    class ContactsVM : BaseVM{
+    class ContactsVM : BaseVM {
         public ICommand SaveCommand { get; set; }
         public ICommand AddPersonCommand { get; set; }
         public ICommand AddEmailCommand { get; set; }
@@ -23,15 +23,18 @@ namespace Final2 {
         public ICommand DeletePhoneCommand { get; set; }
 
         public ObservableCollection<Person> ContactList { get; private set; }
-        public ObservableCollection<Email> EmailList { get; set; }
-        public ObservableCollection<Address> AddressList { get; set; }
-        public ObservableCollection<Phone> PhoneList { get; set; }
-        public ObservableCollection<CType> TypeList { get; set; }
+        public ObservableCollection<Email> EmailList { get; private set; }
+        public ObservableCollection<Address> AddressList { get; private set; }
+        public ObservableCollection<Phone> PhoneList { get; private set; }
+        public ObservableCollection<CType> TypeList { get; private set; }
         private Person _CurrentPerson;
 
         public Person CurrentPerson {
             get { return _CurrentPerson; }
-            set { _CurrentPerson = value; OnPropertyChanged(); }
+            set {
+                _CurrentPerson = value;
+                OnPropertyChanged();
+            }
         }
         private Address _CurrentAddress;
 
@@ -51,11 +54,20 @@ namespace Final2 {
             get { return _CurrentPhone; }
             set { _CurrentPhone = value; OnPropertyChanged(); }
         }
-
+        FinalContext db;
         public ContactsVM() {
-            var db = new FinalContext();
+            db = new FinalContext();
             ContactList = db.People.Local;
             db.People.Load();
+
+            EmailList = db.Emails.Local;
+            db.Emails.Load();
+
+            PhoneList = db.Phones.Local;
+            db.Phones.Load();
+
+            AddressList = db.Addresses.Local;
+            db.Addresses.Load();
 
             SaveCommand = new DelegateCommand(() => db.SaveChanges());
             AddPersonCommand = new DelegateCommand(() => {
@@ -65,7 +77,7 @@ namespace Final2 {
             });
             AddEmailCommand = new DelegateCommand(() => {
                 var em = new Email();
-                CurrentPerson.Emails.Add(em);
+                CurrentPerson.elist.Add(em);
             });
             DeletePersonCommand = new DelegateCommand(() => {
                 db.People.Remove(CurrentPerson);
@@ -73,11 +85,11 @@ namespace Final2 {
             });
             AddPhoneCommand = new DelegateCommand(() => {
                 var pn = new Phone();
-                CurrentPerson.Phones.Add(pn);
+                CurrentPerson.plist.Add(pn);
             });
             AddAddressCommand = new DelegateCommand(() => {
                 var ad = new Address();
-                CurrentPerson.Addresses.Add(ad);
+                CurrentPerson.alist.Add(ad);
             });
             DeleteAddressCommand = new DelegateCommand(() => {
                 db.Addresses.Remove(CurrentAddress);
@@ -91,6 +103,9 @@ namespace Final2 {
                 db.Emails.Remove(CurrentEmail);
                 EmailList.Remove(CurrentEmail);
             });
+        }
+        void LoadEmails() {
+
         }
     }
     public class BaseVM : INotifyPropertyChanged {

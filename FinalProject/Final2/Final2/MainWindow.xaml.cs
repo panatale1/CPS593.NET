@@ -24,18 +24,7 @@ namespace Final2 {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             DataContext = new ContactsVM();
-            System.Windows.Data.CollectionViewSource personViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("personViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // personViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource addressViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("addressViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // addressViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource emailViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("emailViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // emailViewSource.Source = [generic data source]
-            System.Windows.Data.CollectionViewSource phoneViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("phoneViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // phoneViewSource.Source = [generic data source]
+            
         }
     }
 }

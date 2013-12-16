@@ -12,5 +12,6 @@ namespace DataLayerForFinal {
         public string PhoneNumber { get; set; }
         public string Type { get; set; }
         public int PersonID { get; set; }
+        public virtual Person person { get; set; }
     }
 }

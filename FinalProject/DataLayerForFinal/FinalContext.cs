@@ -12,5 +12,13 @@ namespace DataLayerForFinal {
             public DbSet<Phone> Phones { get; set; }
             public DbSet<Address> Addresses { get; set; }
             public DbSet<Email> Emails { get; set; }
+
+            static FinalContext() {
+                Database.SetInitializer<FinalContext>(null);
+            }
+            public FinalContext()
+                : base("Name=FinalContext") {
+
+            }
     }
 }

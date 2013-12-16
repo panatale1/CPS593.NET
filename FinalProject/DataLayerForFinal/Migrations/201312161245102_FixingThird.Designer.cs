@@ -7,13 +7,13 @@ namespace DataLayerForFinal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class Fixing2 : IMigrationMetadata
+    public sealed partial class FixingThird : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Fixing2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixingThird));
         
         string IMigrationMetadata.Id
         {
-            get { return "201312152201521_Fixing2"; }
+            get { return "201312161245102_FixingThird"; }
         }
         
         string IMigrationMetadata.Source

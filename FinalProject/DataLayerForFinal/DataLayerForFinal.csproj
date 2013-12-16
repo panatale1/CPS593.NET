@@ -52,9 +52,13 @@
     <Compile Include="CType.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="FinalContext.cs" />
-    <Compile Include="Migrations\201312152201521_Fixing2.cs" />
-    <Compile Include="Migrations\201312152201521_Fixing2.Designer.cs">
-      <DependentUpon>201312152201521_Fixing2.cs</DependentUpon>
+    <Compile Include="Migrations\201312161245102_FixingThird.cs" />
+    <Compile Include="Migrations\201312161245102_FixingThird.Designer.cs">
+      <DependentUpon>201312161245102_FixingThird.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312161339269_Fixing4.cs" />
+    <Compile Include="Migrations\201312161339269_Fixing4.Designer.cs">
+      <DependentUpon>201312161339269_Fixing4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -65,10 +69,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Address.datasource" />
+    <None Include="Properties\DataSources\CType.datasource" />
+    <None Include="Properties\DataSources\Email.datasource" />
+    <None Include="Properties\DataSources\FinalContext.datasource" />
+    <None Include="Properties\DataSources\Person.datasource" />
+    <None Include="Properties\DataSources\Phone.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312152201521_Fixing2.resx">
-      <DependentUpon>201312152201521_Fixing2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312161245102_FixingThird.resx">
+      <DependentUpon>201312161245102_FixingThird.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312161339269_Fixing4.resx">
+      <DependentUpon>201312161339269_Fixing4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
